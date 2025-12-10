@@ -1,75 +1,42 @@
-Order by Clause:
+select ename,job,hiredate,sal*12 annsal
+from emp
+where (lower(job)='analyst'or lower(job)='manager') and (sal=1250 or sal=300 or sal=800);
 
-* used to sort output ascending/desending order
-* default will sort in ascending order written ASC keyword is optional
-* sort o/p in decending order DESC keyword is mandatory	
-* order by clause last statement in a query
+select *
+from emp
+where (hiredate='31-DEC-1991' or hiredate='01-MAY-1981') and (comm>200) and (lower(ename)='ford' or lower(ename)='james');
 
-Syntax:
+select ename,sal,sal*12 annsal
+from emp
+where ((sal*12)>500) and (comm=300 or comm=500 or comm=1400) and (mgr=7698);
 
-	select */[distinct] c.n/expr alias_name
-	from table name
-	order by c.n/expr/alias_name [ASC]/DESC;
+select *
+from emp
+where (hiredate<='30-APR-1981') and (lower(job)='salesman' or lower(job)='analyst')
+order by empno desc;
 
-Distinct Clause:
+select *
+from emp
+where (hiredate>='21-FEB-1981') and (sal<3000) and (comm>100);
 
-* used to Eliminate duplicate values present in the result/output
-* distinct clause will execute after the select clause
+select ename,sal,sal+100 newsal,comm+500 newcomm
+from emp
+where (mgr=7839 or mgr=7698) and (lower(ename)='allen' or lower(ename)='turner') and (deptno=30)
+order by newsal desc;
 
-Syntax:
+select *
+from emp
+where (sal<3000) and (hiredate<='21-FEB-1981') and (deptno=10 or deptno=20 or deptno=30)
+order by sal desc;
 
-	select */[distinct] c.n/expr alias_name
-	from table name
+select *
+from emp
+where (sal>=1000 and sal<=5000) and (lower(job)='manager' or lower(job)='salesman' or lower(job)='analyst');
 
-Specifing multiple column's in distinct clause:
+select *
+from emp
+where hiredate>='01-JAN-81' and hiredate<='31-DEC-81';
 
-* we are writing multiple column's in distict clause it will not eliminate
-* it will combine mutiple column's in single column then it will eliminate duplicate values
-
-
-Selection:
-
-* Fetching/Reterving/Accessing data from specific table by selecting all/spec/required no of columns and
- also specific/required no of row's in database is called selection
-
-
-Syntax:
-
-	select */[distinct] c.n/expr alias_name   --->3
-	from table name --->1
-	where <cond1>AND /OR<cond1>;  --->2
-
-First from clause will execute
-second where clause will execute
-last select clause will execute
-
-
-Char of where clause:
-
-* used to filter recods
-* select/reject the record
-* Syntax 
-	where LHS_value relational operator RHS_value;
-* execute row by row/record by record
-* Specify cond is true retain record.spec cond false reject the record
-* Specify cond is true/false it will not stop the execution  for all record present in table
-* will not execute multiple records at one shot but multiple conditon for single record at one shot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+select *
+from emp
+where hiredate>='01-FEB-81' and hiredate<='28-FEB-81';
